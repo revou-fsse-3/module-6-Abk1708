@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "module-6-abk1708"
+version = "0.1.0"
+description = ""
+authors = ["Abk1708 <bgus1708@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+flask = "^3.0.2"
+poetry-dotenv-plugin = "^0.2.0"
+flask-sqlalchemy = "^3.1.1"
+psycopg2 = "^2.9.9"
+flask-migrate = "^4.0.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
