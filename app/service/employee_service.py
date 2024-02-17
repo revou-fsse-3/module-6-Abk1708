@@ -9,5 +9,5 @@ class Employees_service:
         return [employee.as_dict() for employee in employees]
     
     def update_employee(self, employee_id, data):
-        updated_employee = self.employee_repo.update_animal_list(employee_id, data)
+        updated_employee = self.employee_repo.update_employee(employee_id, data)
         return updated_employee

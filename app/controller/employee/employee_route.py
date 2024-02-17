@@ -52,7 +52,7 @@ def put_employee(employee_id):
         employee.email = data.get("email", employee.email)
         employee.phone = data.get("phone", employee.phone)
 
-        updatedEmployee = employee_service.update_user(employee_id, data)
+        updatedEmployee = employee_service.update_employee(employee_id, data)
         return api_response(updatedEmployee, 200, "success")
     except Exception as e:
         return str(e), 500
