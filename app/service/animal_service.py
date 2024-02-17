@@ -10,7 +10,7 @@ class Animals_service:
     
     def get_animals(self):
         animals = self.animals_repo.get_animal_list()
-        return animals
+        return [animal.as_dict() for animal in animals]
     
     def update_animals(self, animal_id, data):
         updated_animal = self.animals_repo.update_animal_list(animal_id, data)

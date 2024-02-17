@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify, request
 from app.utils.database import db
 from app.models.employees import Employees
+from app.utils.api_response import api_response
+from app.service.employee_service import Employees_service
 
 employee_blueprint = Blueprint("employee_endpoint", __name__)
 
@@ -22,11 +24,9 @@ def post_employee():
 
 @employee_blueprint.route("/", methods=["GET"])
 def get_employee():
-    try:
-        employee = Employees.query.all()
-        return [employee.as_dict() for employee in employee], 200
-    except Exception as e:
-        return e, 500
+    employee_service = Employees_service()
+    employees = employee_service.get_employees()
+    return api_response(employees, 200, "success")
     
 @employee_blueprint.route("/<int:employee_id>", methods=["GET"])
 def get_employee_by_id(employee_id):
@@ -43,20 +43,17 @@ def get_employee_by_id(employee_id):
 @employee_blueprint.route("/<int:employee_id>", methods=["PUT"])
 def put_employee(employee_id):
     try:
-        employee = Employees.query.get(employee_id)
-
-        if not employee:
-            return "Employee not found", 404
-
+        employee_service = Employees_service()
+        employee = Employees()
+        
         data = request.json
 
         employee.name = data.get("name", employee.name)
         employee.email = data.get("email", employee.email)
         employee.phone = data.get("phone", employee.phone)
 
-        db.session.commit()
-
-        return 'Update successful', 200
+        updatedEmployee = employee_service.update_user(employee_id, data)
+        return api_response(updatedEmployee, 200, "success")
     except Exception as e:
         return str(e), 500
 

@@ -3,7 +3,7 @@ import os
 from app.utils.database import db, migrate
 from app.controller.animal import animal_route
 from app.controller.employee import employee_route
-from app.models import animals
+from app.models import animals, employees
 
 
 app = Flask(__name__)

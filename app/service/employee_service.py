@@ -5,8 +5,8 @@ class Employees_service:
         self.employee_repo = Employees_repo()
         
     def get_employees(self):
-        employee = self.employee_repo.get_employee_list()
-        return employee
+        employees = self.employee_repo.get_employee_list()
+        return [employee.as_dict() for employee in employees]
     
     def update_employee(self, employee_id, data):
         updated_employee = self.employee_repo.update_animal_list(employee_id, data)
