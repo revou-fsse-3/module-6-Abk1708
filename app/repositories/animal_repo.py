@@ -19,27 +19,26 @@ class Animals_repo:
         animal = Animals.query.get(animal_id)
 
         if not animal:
-            return {"message": "Animal not found"}, 404
+            raise FileNotFoundError("Animal not found")
         return animal.as_dict(), 200
     
-    def update_animal_list(self, animal_id, animal):
-        animal = Animals.query.get(animal_id)
-        if not animal:
-            return {"message": "Animal not found"}, 404
-        animal.species = animal.species
-        animal.age = animal.age
-        animal.gender = animal.gender
+    def update_animal_list(self, animal_id, data):
+        animal_obj = Animals.query.get(animal_id)
+        if not animal_obj:
+            raise FileNotFoundError("Animal not found")
+        animal_obj.species = data["species"]
+        animal_obj.age = data["age"]
+        animal_obj.gender = data["gender"]
 
-        db.session.add(animal)
         db.session.commit()
 
-        return {"message": "Update successful"}, 200
+        return animal_obj
     
     def delete_animal_list(self, animal_id):
         animal = Animals.query.get(animal_id)
 
         if not animal:
-            return "Animal not found", 404
+            raise FileNotFoundError("Animal not found")
 
         db.session.delete(animal)
         db.session.commit()

@@ -10,4 +10,4 @@ class Employees_service:
     
     def update_employee(self, employee_id, data):
         updated_employee = self.employee_repo.update_employee(employee_id, data)
-        return updated_employee
+        return updated_employee.as_dict()

@@ -14,4 +14,4 @@ class Animals_service:
     
     def update_animals(self, animal_id, data):
         updated_animal = self.animals_repo.update_animal_list(animal_id, data)
-        return updated_animal
+        return updated_animal.as_dict()

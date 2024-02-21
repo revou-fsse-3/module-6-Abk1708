@@ -43,13 +43,8 @@ def get_animal_by_id(animal_id):
 def put_animal(animal_id):
     try:
         animal_service = Animals_service()
-        animal = Animals()
         
         data = request.json
-
-        animal.species = data.get("species", animal.species)
-        animal.age = data.get("phone", animal.age)
-        animal.gender = data.get("gender", animal.gender)
 
         updatedAnimal = animal_service.update_animals(animal_id, data)
 

@@ -44,13 +44,8 @@ def get_employee_by_id(employee_id):
 def put_employee(employee_id):
     try:
         employee_service = Employees_service()
-        employee = Employees()
         
         data = request.json
-
-        employee.name = data.get("name", employee.name)
-        employee.email = data.get("email", employee.email)
-        employee.phone = data.get("phone", employee.phone)
 
         updatedEmployee = employee_service.update_employee(employee_id, data)
         return api_response(updatedEmployee, 200, "success")
@@ -64,7 +59,7 @@ def employee_customer(employee_id):
         employee = Employees.query.get(employee_id)
 
         if not employee:
-            return "Animal not found", 404
+            return "Employee not found", 404
 
         db.session.delete(employee)
         db.session.commit()

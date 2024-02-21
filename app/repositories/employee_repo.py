@@ -7,13 +7,12 @@ class Employees_repo:
         employees = Employees.query.all()
         return employees
 
-    def update_employee(self, employee_id, employee):
-        employee = Employees.query.get(employee_id)
-        if not employee:
-            return {"message": "User does not exist"}, 404
-        employee.name = employee.name
-        employee.email = employee.email
-        employee.phone = employee.phone
-        db.session.add(employee)
+    def update_employee(self, employee_id, data):
+        employee_obj = Employees.query.get(employee_id)
+        if not employee_obj:
+            FileNotFoundError("Employee not found")
+        employee_obj.name = data["name"]
+        employee_obj.email = data["email"]
+        employee_obj.phone = data["phone"]
         db.session.commit()
-        return {"message": "Success update user"}, 201
+        return employee_obj
