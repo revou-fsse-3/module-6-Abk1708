@@ -15,3 +15,7 @@ FLASK_EMV=developments
 4. From this point, you can execute the API by using `poetry run flask --app ./app/ run`
 
 [URL to the API Documentation created in Postman](https://documenter.getpostman.com/view/30116466/2sA2rAxMSt)
+
+## Initial PyTest Coverage without testing the employee routes
+
+![PyTest coverage without testing employee routes](./assets/initial_pytest_coverage_without_employee_routes.PNG)

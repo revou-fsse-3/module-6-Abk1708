@@ -33,7 +33,7 @@ def test_post_animals_success(test_app, mocker):
 
     # Act
     with test_app.test_request_context():
-        animal_service_create = Animals_service().create_customer(create_data)
+        animal_service_create = Animals_service().post_animals(create_data)
         
     # Assert
     assert animal_service_create['id'] == 2

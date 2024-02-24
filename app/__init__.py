@@ -23,3 +23,15 @@ migrate.init_app(app, db)
 
 app.register_blueprint(animal_route.animal_blueprint, url_prefix="/animals")
 app.register_blueprint(employee_route.employee_blueprint, url_prefix="/employees")
+
+@app.route("/")
+def hello_world():
+    users = User.query.all()
+    results = [{"name": user.username} for user in users]
+    print(results)
+    return {"data": results}
+
+
+if __name__ == "__main__":
+    db.create_all()
+    app.run(debug=True)
