@@ -19,3 +19,7 @@ FLASK_EMV=developments
 ## Initial PyTest Coverage without testing the employee routes
 
 ![PyTest coverage without testing employee routes](./assets/initial_pytest_coverage_without_employee_routes.PNG)
+
+## PyTest Coverage surpass 80% coverage Percentage
+
+![PyTest coverage without testing employee routes](./assets/pytest_coverage_surpass_80_percent.PNG)

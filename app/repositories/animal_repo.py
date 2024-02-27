@@ -18,18 +18,6 @@ class Animals_repo:
             raise FileNotFoundError("Animal not found")
         return animal.as_dict(), 200
     
-    # def update_animal_list(self, animal_id, data):
-    #     animal_obj = Animals.query.get(animal_id)
-    #     if not animal_obj:
-    #         raise FileNotFoundError("Animal not found")
-    #     animal_obj.species = data["species"]
-    #     animal_obj.age = data["age"]
-    #     animal_obj.gender = data["gender"]
-
-    #     db.session.commit()
-
-    #     return animal_obj
-    
     def update_animal_list(self, animal_id, animal):
         animal_obj = Animals.query.get(animal_id)
         animal_obj.species = animal.species
